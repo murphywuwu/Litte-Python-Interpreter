@@ -27,6 +27,16 @@ class Interpreter:
         self.LOAD_VALUE(number)
       elif instruction == 'ADD_TWO_VALUES':
         self.ADD_TWO_VALUES()
-      elif instruction = 'PRINT_VALUES':
+      elif instruction == 'PRINT_VALUES':
         self.PRINT_VALUES()
-        
+
+what_to_execute = {
+  "instructions": [("LOAD_VALUE", 0),
+                   ("LOAD_VALUE", 1),
+                   ("ADD_TWO_VALUES", None),
+                   ("PRINT_VALUES", None)],
+  "numbers": [7, 5]
+}
+
+interpreter = Interpreter()
+interpreter.run_code(what_to_execute)
