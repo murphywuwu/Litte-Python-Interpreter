@@ -40,20 +40,23 @@ class Interpreter:
     
 
   def run_code(self, what_to_execute):
+    # 取出指令
     instructions = what_to_execute['instructions']
-    numbers = what_to_execute['numbers']
-
+    
+    # 依次遍历指令
     for each_step in instructions:
       instruction, argument = each_step
-      argument = self.parse_argument(instruction, argument, what_to_execute)
 
-      if instruction == 'LOAD_VALUE':
-        number = numbers[argument]
-        self.LOAD_VALUE(number)
-      elif instruction == 'ADD_TWO_VALUES':
-        self.ADD_TWO_VALUES()
-      elif instruction == 'PRINT_VALUES':
-        self.PRINT_VALUES()
+      # 取出指令需要操作的数据
+      argument = self.parse_argument(instruction, argument, what_to_execute)
+      
+      bytecode_method = getattr(self, instruction)
+
+      # 运行指令
+      if argument is None:
+        bytecode_method()
+      else:
+        bytecode_method(argument)
 
 what_to_execute = {
   "instructions": [("LOAD_VALUE", 0),
