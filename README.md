@@ -18,7 +18,8 @@ what_to_execute = {
                    ("LOAD_VALUE", 1),
                    ("ADD_TWO_VALUES", None),
                    ("PRINT_ANSWER", None)],
-  "numbers": [7, 5]
+  "numbers": [7, 5],
+  "names": ["a", "b"],
 }
 ```
 
